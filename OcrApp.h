@@ -8,6 +8,9 @@
 #include <QCheckBox>
 #include <tesseract/baseapi.h>
 #include <opencv2/core.hpp>
+#include <QScrollArea>
+#include <QGridLayout>
+#include <QScrollBar>
 
 class OCRApp : public QWidget {
     Q_OBJECT
@@ -27,10 +30,13 @@ private:
     QTextEdit *textEdit;
     QPushButton *loadButton;
     QPushButton *ocrButton;
-    QCheckBox *binarizationCheckBox;
-    QCheckBox *grayScaleCheckBox;
+    QCheckBox *plateModeCheckBox;
     tesseract::TessBaseAPI *tess;
     cv::Mat image;
+    QString currentFileName; 
+
+    QScrollArea *originalImageScrollArea;
+    QScrollArea *processedImageScrollArea;
 
     cv::Mat preprocessImage(const cv::Mat& inputImage);
 };
